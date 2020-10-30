@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1084928404126",
+    "firebase_url": "https://food-delivery-padcx.firebaseio.com",
+    "project_id": "food-delivery-padcx",
+    "storage_bucket": "food-delivery-padcx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084928404126:android:4f5f810dc217565411698f",
+        "android_client_info": {
+          "package_name": "com.padcx.happy_food_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084928404126-b9p5ded63e52j34jag0tid3s00mp39iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6ZKLxL3AzogUz5rqwnS5ky-wLBrMOb0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084928404126-b9p5ded63e52j34jag0tid3s00mp39iv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

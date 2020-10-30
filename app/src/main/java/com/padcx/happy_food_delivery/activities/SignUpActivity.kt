@@ -27,6 +27,11 @@ class SignUpActivity : BaseActivity(), SignUpView {
         tvLogin.setOnClickListener {
             mPresenter.onTapBtnLogin()
         }
+        btnSignUp.setOnClickListener {
+            mPresenter.onTapBtnSignUp(
+                etEmail.text.toString(), etPassword.text.toString(),
+                etUserName.text.toString(), etPhone.text.toString())
+        }
     }
 
     private fun setUpPresenter() {

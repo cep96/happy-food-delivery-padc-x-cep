@@ -1,17 +1,26 @@
 package com.padcx.happy_food_delivery.mvp.presenters.impls
 
 import androidx.lifecycle.LifecycleOwner
+import com.padcx.happy_food_delivery.data.models.AuthenticationModel
+import com.padcx.happy_food_delivery.data.models.AuthenticationModelImpl
 import com.padcx.happy_food_delivery.mvp.presenters.AbstractBasePresenter
 import com.padcx.happy_food_delivery.mvp.presenters.LoginPresenter
 import com.padcx.happy_food_delivery.mvp.views.LoginView
 
 class LoginPresenterImpl: LoginPresenter, AbstractBasePresenter<LoginView>() {
+
+    private val mAuthenticationModelImpl: AuthenticationModel = AuthenticationModelImpl
+
     override fun onUIReady(owner: LifecycleOwner) {
         TODO("Not yet implemented")
     }
 
-    override fun onTapBtnLogin() {
-        mView.navigateToHomeScreen()
+    override fun onTapBtnLogin(email: String, password: String) {
+        mAuthenticationModelImpl.login(email, password, onSuccess = {
+            mView.navigateToHomeScreen()
+        }, onFailure = {
+           mView.showError(it)
+        })
     }
 
     override fun onTapBtnSignUp() {

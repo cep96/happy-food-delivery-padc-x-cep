@@ -29,7 +29,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     private fun setUpActionListener() {
         btnLogin.setOnClickListener {
-           mPresenter.onTapBtnLogin()
+           mPresenter.onTapBtnLogin(etEmail.text.toString(), etPassword.text.toString())
         }
 
         tvSignUp.setOnClickListener {
@@ -50,6 +50,5 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun navigateSignUpScreen() {
         startActivity(SignUpActivity.newIntent(this))
-        finish()
     }
 }

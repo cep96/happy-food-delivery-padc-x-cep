@@ -6,7 +6,7 @@ import com.padcx.happy_food_delivery.mvp.views.LoginView
 interface LoginPresenter: BasePresenter<LoginView> {
 
     fun onUIReady(owner: LifecycleOwner)
-    fun onTapBtnLogin()
+    fun onTapBtnLogin(email: String, password: String)
     fun onTapBtnSignUp()
 
 }
