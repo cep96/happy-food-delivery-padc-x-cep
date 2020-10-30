@@ -1,7 +1,7 @@
 package com.padcx.happy_food_delivery.adapters
 
 import androidx.recyclerview.widget.RecyclerView
-import com.padcx.happy_food_delivery.viewholders.BaseViewHolder
+import com.padcx.happy_food_delivery.views.viewholders.BaseViewHolder
 
 abstract class BaseAdapter<T: BaseViewHolder<W>, W>: RecyclerView.Adapter<T>() {
 

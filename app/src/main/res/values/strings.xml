@@ -17,4 +17,20 @@
     <string name="btn_lbl_sign_up">Sign up</string>
     <string name="txt_lbl_has_account">Already an account?</string>
     <string name="txt_lbl_terms_n_conditions">By clicking Sign up you agree to our \nTerms and Conditions</string>
+    <string name="nav_lbl_restaurants">Restaurants</string>
+    <string name="nav_lbl_offers">Offers</string>
+    <string name="nav_lbl_profile">Account</string>
+    <string name="txt_lbl_delivering_to">Delivering to</string>
+    <string name="txt_lbl_current_location">Current Location</string>
+    <string name="et_lbl_search_foods">Search foods</string>
+    <string name="txt_lbl_popular_choices">Popular Choices</string>
+    <string name="txt_lbl_show_all">Show all</string>
+    <string name="txt_lbl_new_restaurants">New Restaurants</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_lbl_user_name">Your Name</string>
+    <string name="txt_lbl_your_email">Your Email</string>
+    <string name="txt_lbl_your_phone">Your Phone</string>
+    <string name="txt_lbl_city_or_state">City, State</string>
+    <string name="txt_lbl_country">Country</string>
 </resources>

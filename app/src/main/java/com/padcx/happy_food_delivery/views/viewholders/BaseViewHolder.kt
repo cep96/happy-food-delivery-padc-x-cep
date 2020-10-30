@@ -1,4 +1,4 @@
-package com.padcx.happy_food_delivery.viewholders
+package com.padcx.happy_food_delivery.views.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

@@ -29,7 +29,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     private fun setUpActionListener() {
         btnLogin.setOnClickListener {
-            // TODO login button action
+           mPresenter.onTapBtnLogin()
         }
 
         tvSignUp.setOnClickListener {
@@ -44,7 +44,8 @@ class LoginActivity : BaseActivity(), LoginView {
     }
 
     override fun navigateToHomeScreen() {
-        TODO("Not yet implemented")
+        startActivity(MainActivity.newIntent(this))
+        finish()
     }
 
     override fun navigateSignUpScreen() {

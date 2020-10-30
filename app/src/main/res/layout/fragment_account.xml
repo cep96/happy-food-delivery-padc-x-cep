@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AccountFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <FrameLayout
+        android:id="@+id/flProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true">
+
+        <com.padcx.happy_food_delivery.views.components.RoundedCornerImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_baseline_photo_camera_24"
+            app:cornerRadius="15dp" />
+
+        <com.padcx.happy_food_delivery.views.components.RoundedCornerImageView
+            android:id="@+id/ivCamera"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="@dimen/margin_medium_2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/dummy_profile"
+            app:cornerRadius="90dp" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flProfile"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="@string/txt_lbl_user_name"
+        android:textAllCaps="true" />
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserName"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:paddingStart="@dimen/margin_medium"
+        android:text="User"
+        android:textSize="@dimen/text_regular" />
+
+    <TextView
+        android:id="@+id/tvUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etUserName"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="@string/txt_lbl_your_email"
+        android:textAllCaps="true" />
+
+    <EditText
+        android:id="@+id/etUserEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserEmail"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:paddingStart="@dimen/margin_medium"
+        android:text="example@gmail.com"
+        android:textSize="@dimen/text_regular" />
+
+    <TextView
+        android:id="@+id/tvUserPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etUserEmail"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="@string/txt_lbl_your_phone"
+        android:textAllCaps="true" />
+
+    <EditText
+        android:id="@+id/etUserPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserPhone"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:paddingStart="@dimen/margin_medium"
+        android:text="09 123456789"
+        android:textSize="@dimen/text_regular" />
+
+    <TextView
+        android:id="@+id/tvUserCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etUserPhone"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="@string/txt_lbl_city_or_state"
+        android:textAllCaps="true" />
+
+    <EditText
+        android:id="@+id/etUserCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserCity"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:paddingStart="@dimen/margin_medium"
+        android:text="Hlaing, Yangon"
+        android:textSize="@dimen/text_regular" />
+
+    <TextView
+        android:id="@+id/tvUserCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etUserCity"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="@string/txt_lbl_country"
+        android:textAllCaps="true" />
+
+    <EditText
+        android:id="@+id/etUserCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserCountry"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:paddingStart="@dimen/margin_medium"
+        android:text="Hlaing, Yangon"
+        android:textSize="@dimen/text_regular" />
+
+</RelativeLayout>

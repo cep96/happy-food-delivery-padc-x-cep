@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_restaurants"
+        android:title="@string/nav_lbl_restaurants"
+        android:icon="@drawable/icons8_restaurant_building_60"
+        app:showAsAction="ifRoom"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/nav_offers"
+        android:title="@string/nav_lbl_offers"
+        android:icon="@drawable/icons8_fire_60"
+        app:showAsAction="ifRoom"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/nav_account"
+        android:title="@string/nav_lbl_profile"
+        android:icon="@drawable/icons8_account_96"
+        app:showAsAction="ifRoom"
+        android:enabled="true"/>
+
+</menu>
