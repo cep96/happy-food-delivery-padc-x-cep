@@ -33,4 +33,15 @@
     <string name="txt_lbl_your_phone">Your Phone</string>
     <string name="txt_lbl_city_or_state">City, State</string>
     <string name="txt_lbl_country">Country</string>
+    <string name="txt_lbl_start_description">Discover the best foods from \nover 1,000 restaurants</string>
+    <string name="btn_lbl_get_started">Get Started</string>
+    <string name="btn_lbl_continue_with_facebook">Continue with Facebook</string>
+    <string name="btn_lbl_create_account">Create Account</string>
+
+    <string name="slider_lbl_foods">Find foods you love</string>
+    <string name="slider_lbl_foods_desc">Discover the best foods from \nover 1,000 restaurants.</string>
+    <string name="slider_lbl_fast_delivery">Fast Delivery</string>
+    <string name="slider_lbl_fast_delivery_desc">Fast delivery to your home, office \nand wherever you are.</string>
+    <string name="slider_lbl_live_tracking">Live Tracking</string>
+    <string name="slider_lbl_live_tracking_desc">Real time tracking of your food \non the app after order</string>
 </resources>
