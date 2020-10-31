@@ -20,6 +20,8 @@ class LoginActivity : BaseActivity(), LoginView {
 
         setUpPresenter()
         setUpActionListener()
+
+        mPresenter.onUIReady(this)
     }
 
     private fun setUpPresenter() {

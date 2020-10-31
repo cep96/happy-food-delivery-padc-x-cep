@@ -9,23 +9,45 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.padcx.happy_food_delivery.R
 import com.padcx.happy_food_delivery.fragments.AccountFragment
 import com.padcx.happy_food_delivery.fragments.OffersFragment
+import com.padcx.happy_food_delivery.fragments.PopularAndNewRestaurantsFragment
 import com.padcx.happy_food_delivery.fragments.RestaurantsFragment
+import com.padcx.happy_food_delivery.mvp.presenters.MainPresenter
+import com.padcx.happy_food_delivery.mvp.presenters.impls.MainPresenterImpl
+import com.padcx.happy_food_delivery.mvp.views.MainView
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity(), MainView {
+
+    private var viewType = 0
+
+    private lateinit var mPresenter: MainPresenter
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        setSupportActionBar(findViewById(R.id.toolbar))
 
-        loadFragment(RestaurantsFragment.newInstance())
+        setUpPresenter()
+
+        mPresenter.onUIReady(this)
+
+        if (viewType == 1){
+            loadFragment(PopularAndNewRestaurantsFragment.newInstance(""))
+        }else{
+            loadFragment(RestaurantsFragment.newInstance())
+        }
+
         setUpActionListener()
 
+    }
+
+    private fun setUpPresenter() {
+        mPresenter = ViewModelProviders.of(this).get(MainPresenterImpl::class.java)
+        mPresenter.initPresenter(this)
     }
 
 
@@ -34,7 +56,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavView.setOnNavigationItemSelectedListener { item: MenuItem ->  
             when(item.itemId){
                 R.id.nav_restaurants ->{
-                    loadFragment(RestaurantsFragment.newInstance())
+                    if (viewType == 1){
+                        loadFragment(PopularAndNewRestaurantsFragment.newInstance(""))
+                    }else{
+                        loadFragment(RestaurantsFragment.newInstance())
+                    }
                     true
                 }
                 R.id.nav_offers -> {
@@ -77,5 +103,9 @@ class MainActivity : AppCompatActivity() {
         fun newIntent(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }
+    }
+
+    override fun getViewType(type: Int) {
+        viewType = type
     }
 }

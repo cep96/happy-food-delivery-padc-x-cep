@@ -19,7 +19,7 @@ import com.padcx.happy_food_delivery.mvp.presenters.impls.RestaurantsPresenterIm
 import com.padcx.happy_food_delivery.mvp.views.RestaurantsView
 import kotlinx.android.synthetic.main.fragment_restaurants.*
 
-class RestaurantsFragment : Fragment(), RestaurantsView {
+class RestaurantsFragment : BaseFragment(), RestaurantsView {
 
     private lateinit var mPresenter: RestaurantsPresenter
 
@@ -72,9 +72,5 @@ class RestaurantsFragment : Fragment(), RestaurantsView {
 
     override fun showRestaurants(restaurants: List<RestaurantVO>) {
         mRestaurantAdapter.setNewData(restaurants)
-    }
-
-    override fun showError(error: String) {
-        TODO("Not yet implemented")
     }
 }

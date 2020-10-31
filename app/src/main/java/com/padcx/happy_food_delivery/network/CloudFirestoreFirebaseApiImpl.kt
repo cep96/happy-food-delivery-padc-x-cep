@@ -1,5 +1,6 @@
 package com.padcx.happy_food_delivery.network
 
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.padcx.happy_food_delivery.data.vos.FoodVO
@@ -63,5 +64,53 @@ object CloudFirestoreFirebaseApiImpl: FirebaseApi {
                     onSuccess(foodCategoryList)
                 }
             }
+    }
+
+    override fun getPopularChoices(
+        onSuccess: (popularChoices: List<RestaurantVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection("popular_choices")
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.message ?: "Please check internet connection")
+                } ?: run {
+                    onSuccess(fetchRestaurants(value))
+                }
+
+            }
+    }
+
+    override fun getNewRestaurants(
+        onSuccess: (newsRestaurants: List<RestaurantVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        db.collection("restaurants")
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    onFailure(it.message ?: "Please check internet connection")
+                } ?: run {
+                    onSuccess(fetchRestaurants(value))
+                }
+
+            }
+    }
+
+    private fun fetchRestaurants(value: QuerySnapshot?): List<RestaurantVO> {
+        val restaurantList: MutableList<RestaurantVO> = arrayListOf()
+        val result = value?.documents ?: arrayListOf()
+
+        for (document in result){
+            val data = document.data
+            val restaurant = RestaurantVO()
+            restaurant.name = data?.get("name") as String
+            restaurant.rating = data["rating"] as Double
+            restaurant.location = data["location"] as String
+            restaurant.image = data["image"] as String
+            restaurant.estimate_time = data["estimate_time"] as String
+            restaurant.type = data["type"] as String
+            restaurantList.add(restaurant)
+        }
+        return restaurantList
     }
 }

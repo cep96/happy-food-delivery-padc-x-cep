@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Theme.MaterialComponents.Light.DarkActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.RestaurantsFragment">
-
-    <RelativeLayout
-        android:id="@+id/rlRestaurant"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
 
         <TextView
             android:id="@+id/tvDeliveringTo"
@@ -107,121 +101,3 @@
             tools:listitem="@layout/item_restaurant" />
 
     </RelativeLayout>
-
-    <!-- popular restaurant -->
-    <RelativeLayout
-        android:id="@+id/rlPopular"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvPopularSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium_2"
-            android:layout_marginEnd="@dimen/margin_medium_2"
-            android:layout_toStartOf="@id/ivPopularMenu"
-            app:cardCornerRadius="@dimen/margin_medium_2">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/ivPopularSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:src="@drawable/ic_baseline_search_24" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@android:color/white"
-                    android:hint="@string/et_lbl_search_foods"
-                    android:paddingStart="@dimen/margin_medium"
-                    android:textColor="@color/primary_text"
-                    android:textSize="@dimen/text_regular" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <ImageView
-            android:id="@+id/ivPopularMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="@dimen/margin_large"
-            android:layout_marginEnd="@dimen/margin_medium_2"
-            android:src="@drawable/ic_baseline_menu_24"
-            app:tint="@color/colorAccent" />
-
-        <TextView
-            android:id="@+id/tvPopularChoices"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cvPopularSearch"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium_2"
-            android:text="@string/txt_lbl_popular_choices"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_regular_3x"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvPopularShowAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/tvPopularChoices"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/margin_medium_2"
-            android:paddingTop="@dimen/margin_small"
-            android:text="@string/txt_lbl_show_all" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPopularChoices"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvPopularChoices"
-            tools:listitem="@layout/item_popular_choices"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:itemCount="3"/>
-
-        <TextView
-            android:id="@+id/tvNewRestaurants"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rvPopularChoices"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium_2"
-            android:text="@string/txt_lbl_new_restaurants"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_regular_3x"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvNewShowAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/tvNewRestaurants"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/margin_medium_2"
-            android:paddingTop="@dimen/margin_small"
-            android:text="@string/txt_lbl_show_all" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rvNewRestaurants"
-            android:layout_below="@id/tvNewRestaurants"
-            tools:listitem="@layout/item_new_restaurant"
-            tools:itemCount="5"/>
-
-
-    </RelativeLayout>
-
-</FrameLayout>
