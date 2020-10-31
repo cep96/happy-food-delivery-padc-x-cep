@@ -11,7 +11,7 @@
         android:id="@+id/rlRestaurant"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        >
 
         <TextView
             android:id="@+id/tvDeliveringTo"
@@ -112,7 +112,8 @@
     <RelativeLayout
         android:id="@+id/rlPopular"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvPopularSearch"
