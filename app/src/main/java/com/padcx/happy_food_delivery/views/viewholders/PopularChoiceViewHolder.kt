@@ -1,6 +1,7 @@
 package com.padcx.happy_food_delivery.views.viewholders
 
 import android.view.View
+import com.bumptech.glide.Glide
 import com.padcx.happy_food_delivery.data.vos.RestaurantVO
 import kotlinx.android.synthetic.main.item_popular_choices.view.*
 
@@ -9,5 +10,9 @@ class PopularChoiceViewHolder(itemView: View) : BaseViewHolder<RestaurantVO>(ite
         itemView.tvRestaurantName.text = data.name
         itemView.tvRestaurantType.text = data.type
         itemView.tvRating.text = data.rating.toString()
+
+        Glide.with(itemView.context)
+            .load(data.image)
+            .into(itemView.ivRestaurantImg)
     }
 }

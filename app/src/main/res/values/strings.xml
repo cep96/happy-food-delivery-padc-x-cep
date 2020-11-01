@@ -44,4 +44,15 @@
     <string name="slider_lbl_fast_delivery_desc">Fast delivery to your home, office \nand wherever you are.</string>
     <string name="slider_lbl_live_tracking">Live Tracking</string>
     <string name="slider_lbl_live_tracking_desc">Real time tracking of your food \non the app after order</string>
+    <string name="txt_lbl_add_more_foods">Add more foods</string>
+    <string name="txt_lbl_add_notes">Add Notes</string>
+    <string name="txt_lbl_delivery_instructions">Delivery Instructions</string>
+    <string name="txt_lbl_subtotal">Subtotal</string>
+    <string name="txt_lbl_delivery_cost">Delivery Cost</string>
+    <string name="btn_lbl_check_out">Check Out</string>
+    <string name="txt_lbl_thank_you">Thank you for \nyour order.</string>
+    <string name="txt_lbl_track_order">You can track the delivery  \nin the \"Order\" section.</string>
+    <string name="btn_lbl_track_my_order">Track my order</string>
+    <string name="txt_lbl_order_something_else">Order something else</string>
+    <string name="txt_lbl_save">Save</string>
 </resources>

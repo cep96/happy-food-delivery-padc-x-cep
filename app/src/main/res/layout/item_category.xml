@@ -32,6 +32,4 @@
         android:textColor="@color/primary_text"
         android:layout_marginTop="@dimen/margin_small"/>
 
-
-
 </LinearLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_medium"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/margin_medium">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/margin_medium_2">
+
+        <TextView
+            android:id="@+id/tvFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Classic Cheese Burger"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/primary_text"
+            />
+        
+        <TextView
+            android:id="@+id/tvIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_small"
+            android:layout_below="@id/tvFoodName"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:lines="2"
+            android:layout_marginEnd="@dimen/margin_xlarge"
+            android:lineSpacingMultiplier="1.2"
+            android:text="Angus, beef, cheese, onion, tomato jam, pickles"
+            android:layout_toStartOf="@id/tvIsPopular"
+            android:textColor="@color/secondary_text"/>
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:text="$16"
+            android:textSize="@dimen/text_regular"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            />
+
+        <TextView
+            android:id="@+id/tvIsPopular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_star_24"
+            android:drawableTint="@color/colorAccent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="Popular"
+            android:textSize="@dimen/text_regular"
+            android:textColor="@color/colorAccent"
+            android:drawablePadding="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_xlarge" />
+
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

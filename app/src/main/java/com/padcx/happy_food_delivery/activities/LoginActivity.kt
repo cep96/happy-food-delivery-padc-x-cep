@@ -19,9 +19,9 @@ class LoginActivity : BaseActivity(), LoginView {
         setContentView(R.layout.activity_login)
 
         setUpPresenter()
-        setUpActionListener()
 
         mPresenter.onUIReady(this)
+        setUpActionListener()
     }
 
     private fun setUpPresenter() {

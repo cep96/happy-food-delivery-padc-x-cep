@@ -1,9 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:weightSum="4"
     tools:context=".activities.RestaurantDetailsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ivRestaurantImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/dummy_restaurant"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/ivLeftArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            app:tint="@android:color/white"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginStart="@dimen/margin_medium_2"/>
+
+        <TextView
+            android:id="@+id/tvEstimateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20 -30 mins"
+            android:textStyle="bold"
+            android:textColor="@color/primary_text"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/margin_medium_2"
+            android:background="@drawable/rounded_corner_white_bg"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_card_medium_2"
+            android:paddingEnd="@dimen/margin_card_medium_2"
+            />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@drawable/rounded_upper_corner_white_bg">
+
+        <TextView
+            android:id="@+id/tvRestaurantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_heading_1x"
+            android:text="Really Cool Burgers"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_toStartOf="@id/ivFavourite"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/colorAccent"/>
+
+        <ImageView
+            android:id="@+id/ivFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_medium_2"
+            app:tint="@color/secondary_text" />
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvRestaurantName"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:drawableLeft="@drawable/ic_baseline_star_24"
+            android:drawableTint="@color/colorAccent"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="4.6"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:drawablePadding="@dimen/margin_small"
+            android:textSize="@dimen/text_regular_2x"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/tvRating"
+            android:layout_toEndOf="@id/tvRating"
+            android:text="Western Food $$"
+            android:paddingStart="@dimen/margin_medium"
+            android:paddingTop="@dimen/margin_smaller"
+            />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+            android:drawableTint="@color/colorAccent"
+            android:layout_below="@id/tvRating"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:text="123 Rock Street, New York City"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/margin_small"
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#fafafa"
+            app:cardCornerRadius="@dimen/margin_large"
+            android:layout_below="@id/tvLocation"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPopularChoices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_lbl_popular_choices"
+                    android:layout_marginStart="@dimen/margin_medium_2"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPopularChoices"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_food_popular_choices"/>
+
+                <TextView
+                    android:id="@+id/tvItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Burgers"
+                    android:layout_marginStart="@dimen/margin_medium_2"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:textColor="@color/primary_text"
+                    android:textStyle="bold"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFoodItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_food"
+                    android:padding="@dimen/margin_medium"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

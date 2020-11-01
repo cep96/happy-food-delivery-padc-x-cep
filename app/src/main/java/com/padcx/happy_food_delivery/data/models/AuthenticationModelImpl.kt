@@ -26,4 +26,20 @@ object AuthenticationModelImpl: AuthenticationModel {
     ) {
         mAuthManager.register(email, password, useName, userPhone, onSuccess, onFailure)
     }
+
+    override fun updateProfile(name: String, profile: String) {
+        mAuthManager.updateProfile(name, profile)
+    }
+
+    override fun getUserName(): String {
+        return mAuthManager.getUserName()
+    }
+
+    override fun getUserEmail(): String {
+        return mAuthManager.getUserEmail()
+    }
+
+    override fun getUserPhone(): String {
+        return mAuthManager.getUserPhone()
+    }
 }

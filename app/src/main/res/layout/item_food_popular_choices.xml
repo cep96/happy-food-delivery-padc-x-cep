@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginStart="@dimen/margin_medium_2"
+    android:layout_marginTop="@dimen/margin_medium_2">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/ivFoodImg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/dummy_burger"
+            android:layout_margin="@dimen/margin_medium_2"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvFoodName"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Burgers"
+        android:textSize="@dimen/text_regular"
+        android:textStyle="bold"
+        android:lines="2"
+        android:layout_gravity="start"
+        android:textColor="@color/primary_text"
+        android:layout_marginTop="@dimen/margin_small"/>
+
+    <TextView
+        android:id="@+id/tvFoodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$15"
+        android:layout_gravity="start"
+        android:textSize="@dimen/text_regular"
+        android:textStyle="bold"
+        android:textColor="@color/primary_text" />
+
+</LinearLayout>

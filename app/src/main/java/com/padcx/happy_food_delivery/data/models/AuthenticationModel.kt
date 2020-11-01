@@ -7,7 +7,10 @@ interface AuthenticationModel {
     var mAuthManager: AuthManager
 
     fun login(email: String, password: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)
-
     fun register(email: String, password: String, useName: String, userPhone: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)
+    fun updateProfile(name: String, profile: String)
 
+    fun getUserName(): String
+    fun getUserEmail(): String
+    fun getUserPhone(): String
 }

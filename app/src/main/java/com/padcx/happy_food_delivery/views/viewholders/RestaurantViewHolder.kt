@@ -1,6 +1,7 @@
 package com.padcx.happy_food_delivery.views.viewholders
 
 import android.view.View
+import com.bumptech.glide.Glide
 import com.padcx.happy_food_delivery.data.vos.RestaurantVO
 import kotlinx.android.synthetic.main.item_restaurant.view.*
 
@@ -10,5 +11,9 @@ class RestaurantViewHolder(itemView: View) : BaseViewHolder<RestaurantVO>(itemVi
        itemView.tvRestaurantName.text = data.name
         itemView.tvRating.text = data.rating.toString()
         itemView.tvRatingNCategory.text = data.type
+
+        Glide.with(itemView.context)
+            .load(data.image)
+            .into(itemView.ivRestaurantImg)
     }
 }

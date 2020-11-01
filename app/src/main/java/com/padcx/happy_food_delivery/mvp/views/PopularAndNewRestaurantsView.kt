@@ -7,4 +7,6 @@ interface PopularAndNewRestaurantsView: BaseView {
     fun showNewRestaurants(newRestaurants: List<RestaurantVO>)
     fun showPopularChoices(popularChoices: List<RestaurantVO>)
 
+    fun navigateToDetailsScreen(restaurantVO: RestaurantVO)
+
 }

@@ -1,12 +1,13 @@
 package com.padcx.happy_food_delivery.data.vos
 
 import com.google.firebase.database.IgnoreExtraProperties
+import java.io.Serializable
 
 @IgnoreExtraProperties
-data class MenuVO(
-    var isPopular: Boolean = false,
-    var name: String ?= "",
-    var price: String ?= "",
+data class FoodItemVO(
     var image: String ?= "",
-    var ingredients: ArrayList<String> = arrayListOf()
-)
+    var isPopular: Boolean = false,
+    var price: Int = 0,
+    var name: String ?= "",
+    var ingredients: List<String> = arrayListOf()
+): Serializable

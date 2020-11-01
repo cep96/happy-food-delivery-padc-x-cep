@@ -6,16 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AccountFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+    <TextView
+        android:id="@+id/tvSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_lbl_save"
+        android:textColor="@color/primary_text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginEnd="@dimen/margin_medium_2"/>
 
     <FrameLayout
         android:id="@+id/flProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/tvSave"
         android:layout_centerHorizontal="true">
 
         <com.padcx.happy_food_delivery.views.components.RoundedCornerImageView
@@ -97,6 +102,7 @@
         android:hint="09 123456789"
         android:textSize="@dimen/text_regular" />
 
+    <!--
     <TextView
         android:id="@+id/tvUserCity"
         android:layout_width="wrap_content"
@@ -136,5 +142,5 @@
         android:paddingStart="@dimen/margin_medium"
         android:hint="Hlaing, Yangon"
         android:textSize="@dimen/text_regular" />
-
+-->
 </RelativeLayout>
