@@ -1,5 +1,7 @@
 package com.padcx.happy_food_delivery.data.models
 
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.padcx.happy_food_delivery.network.auth.AuthManager
 import com.padcx.happy_food_delivery.network.auth.FirebaseAuthManagerImpl
 
@@ -27,8 +29,13 @@ object AuthenticationModelImpl: AuthenticationModel {
         mAuthManager.register(email, password, useName, userPhone, onSuccess, onFailure)
     }
 
-    override fun updateProfile(name: String, profile: String) {
-        mAuthManager.updateProfile(name, profile)
+    override fun updateProfile(
+        email: String,
+        changeRequest: UserProfileChangeRequest,
+        onSuccess: (FirebaseUser) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mAuthManager.updateProfile(email, changeRequest, onSuccess, onFailure)
     }
 
     override fun getUserName(): String {

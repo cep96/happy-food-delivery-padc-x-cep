@@ -1,8 +1,8 @@
 package com.padcx.happy_food_delivery.network.auth
 
-import android.net.Uri
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 
 object FirebaseAuthManagerImpl: AuthManager {
@@ -59,16 +59,24 @@ object FirebaseAuthManagerImpl: AuthManager {
         return mFirebaseAuth.currentUser?.phoneNumber ?: ""
     }
 
-    override fun updateProfile(name: String, profileUrl: String) {
-        val profileUpdate: UserProfileChangeRequest = UserProfileChangeRequest.Builder()
-            .setDisplayName(name)
-            .setPhotoUri(Uri.parse(profileUrl))
-            .build()
-
-        firebaseUser?.updateProfile(profileUpdate)?.addOnCompleteListener {task ->
-                if (task.isSuccessful){
-                    Log.d("Profile", "==> Profile updated")
-                }
+    override fun updateProfile(
+        email: String,
+        changeRequest: UserProfileChangeRequest,
+        onSuccess: (FirebaseUser) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        if (email != mFirebaseAuth.currentUser?.email){
+            mFirebaseAuth.currentUser?.updateEmail(email)?.addOnCompleteListener {
+                if(it.isSuccessful && it.isComplete) Log.d("emailUpdate","Success")
+                else it.exception?.localizedMessage?.let { it1 -> Log.d("emailUpdate", it1) }
             }
+        }
+
+        firebaseUser?.updateProfile(changeRequest)?.addOnCompleteListener {task ->
+            if (task.isSuccessful){
+                Log.d("Profile", "==> Profile updated")
+            }
+        }
     }
+
 }

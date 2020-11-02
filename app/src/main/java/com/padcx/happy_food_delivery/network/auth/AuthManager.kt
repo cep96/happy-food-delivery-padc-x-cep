@@ -1,5 +1,8 @@
 package com.padcx.happy_food_delivery.network.auth
 
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
+
 interface AuthManager {
 
     fun login(email: String, password: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)
@@ -8,5 +11,5 @@ interface AuthManager {
     fun getUserEmail(): String
     fun getUserPhone(): String
 
-    fun updateProfile(name: String, profileUrl: String)
+    fun updateProfile(email: String, changeRequest: UserProfileChangeRequest, onSuccess: (FirebaseUser) -> Unit, onFailure: (String) -> Unit)
 }

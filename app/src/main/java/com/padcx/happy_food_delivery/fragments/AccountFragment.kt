@@ -2,27 +2,31 @@ package com.padcx.happy_food_delivery.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.padcx.happy_food_delivery.R
 import com.padcx.happy_food_delivery.mvp.presenters.AccountPresenter
 import com.padcx.happy_food_delivery.mvp.presenters.impls.AccountPresenterImpl
 import com.padcx.happy_food_delivery.mvp.views.AccountView
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_account.*
 import java.io.IOException
 
 class AccountFragment : BaseFragment(), AccountView {
 
     private lateinit var mPresenter: AccountPresenter
-    private var filePath: String ?= ""
+    private var tempBitmap: Bitmap?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,15 +52,14 @@ class AccountFragment : BaseFragment(), AccountView {
     }
 
     private fun setUpActionListener() {
-        ivCamera.setOnClickListener {
-            mPresenter.onTapProfile()
+        flProfile.setOnClickListener {
+//            mPresenter.onTapProfile()
+            openGallery()
         }
 
         tvSave.setOnClickListener {
-            if (filePath == ""){
-                //
-            }else{
-                mPresenter.onTapSave(etUserName.text.toString(), filePath!!)
+            tempBitmap?.let {
+                mPresenter.onTapSave(etEmail.text.toString(), it)
             }
         }
     }
@@ -76,9 +79,11 @@ class AccountFragment : BaseFragment(), AccountView {
         etUserEmail.setText(userEmail)
         etUserPhone.setText(userPhone)
 
-        Glide.with(this.requireActivity())
-            .load(userProfile)
-            .into(ivProfile)
+        userProfile.let {
+            Glide.with(this.requireActivity())
+                .load(it)
+                .into(ivProfile)
+        }
     }
 
     override fun openGallery() {
@@ -88,6 +93,7 @@ class AccountFragment : BaseFragment(), AccountView {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
@@ -95,12 +101,30 @@ class AccountFragment : BaseFragment(), AccountView {
                 return
             }
 
-            filePath = data.data!!.path
+            val filePath = data.data
+            Log.d("filePath", "==> $filePath")
+            try {
 
-            Glide.with(this.requireContext())
-                .load(filePath)
-                .into(ivProfile)
+                filePath?.let {
+                    if (Build.VERSION.SDK_INT >= 29) {
+                        val source: ImageDecoder.Source =
+                            ImageDecoder.createSource(this.requireContext().contentResolver, filePath)
 
+                        val bitmap = ImageDecoder.decodeBitmap(source)
+                        tempBitmap = bitmap
+                    } else {
+                        val bitmap = MediaStore.Images.Media.getBitmap(
+                            this.requireContext().contentResolver, filePath
+                        )
+                        tempBitmap = bitmap
+                    }
+                    ivProfile.setImageBitmap(tempBitmap)
+                }
+
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
 
         }
     }

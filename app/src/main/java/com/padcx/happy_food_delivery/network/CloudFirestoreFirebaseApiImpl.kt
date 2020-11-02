@@ -11,8 +11,7 @@ import kotlin.collections.HashMap
 object CloudFirestoreFirebaseApiImpl: FirebaseApi {
 
     private val db = Firebase.firestore
-
-
+    
     override fun getRestaurants(
         onSuccess: (restaurants: List<RestaurantVO>) -> Unit,
         onFailure: (String) -> Unit
