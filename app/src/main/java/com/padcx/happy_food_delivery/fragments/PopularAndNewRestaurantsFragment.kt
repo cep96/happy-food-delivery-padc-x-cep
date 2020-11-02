@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcx.happy_food_delivery.R
+import com.padcx.happy_food_delivery.VIEW_TYPE_NEW_RESTAURANTS
+import com.padcx.happy_food_delivery.VIEW_TYPE_POPULAR_RESTAURANTS
 import com.padcx.happy_food_delivery.activities.RestaurantDetailsActivity
-import com.padcx.happy_food_delivery.adapters.NewRestaurantRecyclerAdapter
-import com.padcx.happy_food_delivery.adapters.PopularChoiceRecyclerAdapter
+import com.padcx.happy_food_delivery.adapters.RestaurantRecyclerAdapter
 import com.padcx.happy_food_delivery.data.vos.RestaurantVO
-import com.padcx.happy_food_delivery.delegates.RestaurantActionDelegate
 import com.padcx.happy_food_delivery.mvp.presenters.PopularAndNewRestaurantsPresenter
 import com.padcx.happy_food_delivery.mvp.presenters.impls.PopularAndNewRestaurantsPresenterImpl
 import com.padcx.happy_food_delivery.mvp.views.PopularAndNewRestaurantsView
@@ -25,8 +25,10 @@ class PopularAndNewRestaurantsFragment : BaseFragment(), PopularAndNewRestaurant
 
     private lateinit var mPresenter: PopularAndNewRestaurantsPresenter
 
-    private lateinit var mPopularChoicesAdapter: PopularChoiceRecyclerAdapter
-    private lateinit var mNewRestaurantsAdapter: NewRestaurantRecyclerAdapter
+//    private lateinit var mPopularChoicesAdapter: PopularChoiceRecyclerAdapter
+//    private lateinit var mNewRestaurantsAdapter: NewRestaurantRecyclerAdapter
+    private lateinit var mRestaurantsAdapter: RestaurantRecyclerAdapter
+    private lateinit var mPopularRestaurantAdapter: RestaurantRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,15 +57,15 @@ class PopularAndNewRestaurantsFragment : BaseFragment(), PopularAndNewRestaurant
 
     private fun setUpRecyclerView() {
 
-        mPopularChoicesAdapter = PopularChoiceRecyclerAdapter()
+        mPopularRestaurantAdapter = RestaurantRecyclerAdapter(VIEW_TYPE_POPULAR_RESTAURANTS, mPresenter)
         rvPopularChoices.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        rvPopularChoices.adapter = mPopularChoicesAdapter
+        rvPopularChoices.adapter = mPopularRestaurantAdapter
 
-        mNewRestaurantsAdapter = NewRestaurantRecyclerAdapter(mPresenter)
+        mRestaurantsAdapter = RestaurantRecyclerAdapter(VIEW_TYPE_NEW_RESTAURANTS, mPresenter)
         val layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.VERTICAL, false)
         rvNewRestaurants.layoutManager = layoutManager
         rvNewRestaurants.addItemDecoration(DividerItemDecoration(rvNewRestaurants.context, layoutManager.orientation))
-        rvNewRestaurants.adapter = mNewRestaurantsAdapter
+        rvNewRestaurants.adapter = mRestaurantsAdapter
     }
 
     private fun setUpPresenter() {
@@ -83,11 +85,13 @@ class PopularAndNewRestaurantsFragment : BaseFragment(), PopularAndNewRestaurant
     }
 
     override fun showNewRestaurants(newRestaurants: List<RestaurantVO>) {
-        mNewRestaurantsAdapter.setNewData(newRestaurants)
+//        mNewRestaurantsAdapter.setNewData(newRestaurants)
+        mRestaurantsAdapter.setNewData(newRestaurants)
     }
 
     override fun showPopularChoices(popularChoices: List<RestaurantVO>) {
-        mPopularChoicesAdapter.setNewData(popularChoices)
+//        mPopularChoicesAdapter.setNewData(popularChoices)
+        mPopularRestaurantAdapter.setNewData(popularChoices)
     }
 
     override fun navigateToDetailsScreen(restaurantVO: RestaurantVO) {

@@ -15,13 +15,13 @@ class PopularAndNewRestaurantsPresenterImpl: PopularAndNewRestaurantsPresenter,
     private val mFoodDeliveryModel: FoodDeliveryModel = FoodDeliveryModelImpl
 
     override fun onUIReady(owner: LifecycleOwner) {
-        mFoodDeliveryModel.getPopularChoices(onSuccess = {
+        mFoodDeliveryModel.getRestaurants(onSuccess = {
             mView.showPopularChoices(it)
         }, onFailure = {
             mView.showError(it)
         })
 
-        mFoodDeliveryModel.getNewRestaurants(onSuccess = {
+        mFoodDeliveryModel.getRestaurants(onSuccess = {
             mView.showNewRestaurants(it)
         }, onFailure = {
             mView.showError(it)

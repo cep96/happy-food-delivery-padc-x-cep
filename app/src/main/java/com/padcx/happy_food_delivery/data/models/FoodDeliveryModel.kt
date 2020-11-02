@@ -11,8 +11,8 @@ interface FoodDeliveryModel {
 
     fun getRestaurants(onSuccess: (restaurants: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
     fun getFoodCategories(onSuccess: (categories: List<FoodVO>) -> Unit, onFailure: (String) -> Unit)
-    fun getPopularChoices(onSuccess: (popularChoices: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
-    fun getNewRestaurants(onSuccess: (newRestaurants: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
+//    fun getPopularChoices(onSuccess: (popularChoices: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
+//    fun getNewRestaurants(onSuccess: (newRestaurants: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
 
     fun getFoodItems(restaurantId: String, onSuccess: (foodItems: List<FoodItemVO>) -> Unit, onFailure: (String) -> Unit)
     fun getPopularFood(restaurantId: String, onSuccess: (popularFoods: List<PopularChoiceVO>) -> Unit, onFailure: (String) -> Unit)

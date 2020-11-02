@@ -7,5 +7,6 @@ interface RestaurantsView: BaseView {
 
     fun showCategories(categories: List<FoodVO>)
     fun showRestaurants(restaurants: List<RestaurantVO>)
+    fun navigateToRestaurantDetailsScreen(restaurantVO: RestaurantVO)
 
 }

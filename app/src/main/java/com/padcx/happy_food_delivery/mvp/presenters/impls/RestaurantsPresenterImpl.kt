@@ -3,6 +3,7 @@ package com.padcx.happy_food_delivery.mvp.presenters.impls
 import androidx.lifecycle.LifecycleOwner
 import com.padcx.happy_food_delivery.data.models.FoodDeliveryModel
 import com.padcx.happy_food_delivery.data.models.FoodDeliveryModelImpl
+import com.padcx.happy_food_delivery.data.vos.RestaurantVO
 import com.padcx.happy_food_delivery.mvp.presenters.AbstractBasePresenter
 import com.padcx.happy_food_delivery.mvp.presenters.RestaurantsPresenter
 import com.padcx.happy_food_delivery.mvp.views.RestaurantsView
@@ -23,5 +24,9 @@ class RestaurantsPresenterImpl: RestaurantsPresenter, AbstractBasePresenter<Rest
         }, onFailure = {
             mView.showError(it)
         })
+    }
+
+    override fun onTapRestaurant(restaurant: RestaurantVO) {
+        mView.navigateToRestaurantDetailsScreen(restaurant)
     }
 }

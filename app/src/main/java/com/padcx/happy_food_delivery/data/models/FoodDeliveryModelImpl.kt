@@ -24,19 +24,19 @@ object FoodDeliveryModelImpl: FoodDeliveryModel {
         mFirebaseApi.getFoodCategories(onSuccess, onFailure)
     }
 
-    override fun getPopularChoices(
-        onSuccess: (popularChoices: List<RestaurantVO>) -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        mFirebaseApi.getPopularChoices(onSuccess, onFailure)
-    }
-
-    override fun getNewRestaurants(
-        onSuccess: (newRestaurants: List<RestaurantVO>) -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        mFirebaseApi.getNewRestaurants(onSuccess, onFailure)
-    }
+//    override fun getPopularChoices(
+//        onSuccess: (popularChoices: List<RestaurantVO>) -> Unit,
+//        onFailure: (String) -> Unit
+//    ) {
+//        mFirebaseApi.getPopularChoices(onSuccess, onFailure)
+//    }
+//
+//    override fun getNewRestaurants(
+//        onSuccess: (newRestaurants: List<RestaurantVO>) -> Unit,
+//        onFailure: (String) -> Unit
+//    ) {
+//        mFirebaseApi.getNewRestaurants(onSuccess, onFailure)
+//    }
 
     override fun getFoodItems(
         restaurantId: String,

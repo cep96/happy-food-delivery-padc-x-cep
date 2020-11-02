@@ -6,8 +6,8 @@ interface FirebaseApi {
 
     fun getRestaurants(onSuccess: (restaurants: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
     fun getFoodCategories(onSuccess: (categories: List<FoodVO>) -> Unit, onFailure: (String) -> Unit)
-    fun getPopularChoices(onSuccess: (popularChoices: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
-    fun getNewRestaurants(onSuccess: (newsRestaurants: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
+//    fun getPopularChoices(onSuccess: (popularChoices: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
+//    fun getNewRestaurants(onSuccess: (newsRestaurants: List<RestaurantVO>) -> Unit, onFailure: (String) -> Unit)
 
     fun getFoodsOrderFromBasket(onSuccess: (orders: List<MyOrderVO>) -> Unit, onFailure: (String) -> Unit)
     fun addFoodToBasket(name: String, price: Int, count: Int, origin_price: Int)

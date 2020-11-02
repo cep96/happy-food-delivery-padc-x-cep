@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Theme.MaterialComponents.Light.DarkActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.RestaurantsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tvDeliveringTo"
@@ -101,3 +105,5 @@
             tools:listitem="@layout/item_restaurant" />
 
     </RelativeLayout>
+
+</ScrollView>

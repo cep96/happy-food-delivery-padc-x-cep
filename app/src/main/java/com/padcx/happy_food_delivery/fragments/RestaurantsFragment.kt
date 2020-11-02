@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.padcx.happy_food_delivery.R
+import com.padcx.happy_food_delivery.VIEW_TYPE_RESTAURANTS
+import com.padcx.happy_food_delivery.activities.RestaurantDetailsActivity
 import com.padcx.happy_food_delivery.adapters.FoodCategoryRecyclerAdapter
 import com.padcx.happy_food_delivery.adapters.RestaurantRecyclerAdapter
 import com.padcx.happy_food_delivery.data.vos.FoodVO
@@ -45,7 +47,7 @@ class RestaurantsFragment : BaseFragment(), RestaurantsView {
     }
 
     private fun setUpRecyclerView() {
-        mRestaurantAdapter = RestaurantRecyclerAdapter()
+        mRestaurantAdapter = RestaurantRecyclerAdapter(VIEW_TYPE_RESTAURANTS, mPresenter)
         rvRestaurant.layoutManager = LinearLayoutManager(this.requireContext())
         rvRestaurant.adapter = mRestaurantAdapter
 
@@ -72,5 +74,9 @@ class RestaurantsFragment : BaseFragment(), RestaurantsView {
 
     override fun showRestaurants(restaurants: List<RestaurantVO>) {
         mRestaurantAdapter.setNewData(restaurants)
+    }
+
+    override fun navigateToRestaurantDetailsScreen(restaurantVO: RestaurantVO) {
+        startActivity(RestaurantDetailsActivity.newIntent(this.requireContext(),restaurantVO))
     }
 }

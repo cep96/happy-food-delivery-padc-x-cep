@@ -11,7 +11,7 @@ import kotlin.collections.HashMap
 object CloudFirestoreFirebaseApiImpl: FirebaseApi {
 
     private val db = Firebase.firestore
-    
+
     override fun getRestaurants(
         onSuccess: (restaurants: List<RestaurantVO>) -> Unit,
         onFailure: (String) -> Unit
@@ -27,6 +27,7 @@ object CloudFirestoreFirebaseApiImpl: FirebaseApi {
                     for (document in result){
                         val data = document.data
                         val restaurant = RestaurantVO()
+                        restaurant.id = document.id
                         restaurant.name = data?.get("name") as String
                         restaurant.rating = data["rating"] as Double
                         restaurant.location = data["location"] as String
@@ -67,35 +68,35 @@ object CloudFirestoreFirebaseApiImpl: FirebaseApi {
             }
     }
 
-    override fun getPopularChoices(
-        onSuccess: (popularChoices: List<RestaurantVO>) -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        db.collection("popular_choices")
-            .addSnapshotListener { value, error ->
-                error?.let {
-                    onFailure(it.message ?: "Please check internet connection")
-                } ?: run {
-                    onSuccess(fetchRestaurants(value))
-                }
-
-            }
-    }
-
-    override fun getNewRestaurants(
-        onSuccess: (newsRestaurants: List<RestaurantVO>) -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        db.collection("new_restaurants")
-            .addSnapshotListener { value, error ->
-                error?.let {
-                    onFailure(it.message ?: "Please check internet connection")
-                } ?: run {
-                    onSuccess(fetchRestaurants(value))
-                }
-
-            }
-    }
+//    override fun getPopularChoices(
+//        onSuccess: (popularChoices: List<RestaurantVO>) -> Unit,
+//        onFailure: (String) -> Unit
+//    ) {
+//        db.collection("popular_choices")
+//            .addSnapshotListener { value, error ->
+//                error?.let {
+//                    onFailure(it.message ?: "Please check internet connection")
+//                } ?: run {
+//                    onSuccess(fetchRestaurants(value))
+//                }
+//
+//            }
+//    }
+//
+//    override fun getNewRestaurants(
+//        onSuccess: (newsRestaurants: List<RestaurantVO>) -> Unit,
+//        onFailure: (String) -> Unit
+//    ) {
+//        db.collection("new_restaurants")
+//            .addSnapshotListener { value, error ->
+//                error?.let {
+//                    onFailure(it.message ?: "Please check internet connection")
+//                } ?: run {
+//                    onSuccess(fetchRestaurants(value))
+//                }
+//
+//            }
+//    }
 
     override fun getFoodsOrderFromBasket(
         onSuccess: (orders: List<MyOrderVO>) -> Unit,
@@ -161,7 +162,7 @@ object CloudFirestoreFirebaseApiImpl: FirebaseApi {
         onSuccess: (foodItems: List<FoodItemVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        db.collection("new_restaurants/${documentId}/food_items")
+        db.collection("restaurants/${documentId}/food_items")
             .addSnapshotListener { value, error ->
                 error?.let {
                     onFailure(it.message ?: "Please check internet connection")
@@ -191,7 +192,7 @@ object CloudFirestoreFirebaseApiImpl: FirebaseApi {
         onSuccess: (foodItems: List<PopularChoiceVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        db.collection("new_restaurants/${documentId}/popular_choices")
+        db.collection("restaurants/${documentId}/popular_choices")
             .addSnapshotListener { value, error ->
                 error?.let {
                     onFailure(it.message ?: "Please check internet connection")
@@ -217,23 +218,23 @@ object CloudFirestoreFirebaseApiImpl: FirebaseApi {
     }
 
 
-    private fun fetchRestaurants(value: QuerySnapshot?): List<RestaurantVO> {
-        val restaurantList: MutableList<RestaurantVO> = arrayListOf()
-        val result = value?.documents ?: arrayListOf()
-
-        for (document in result){
-            val data = document.data
-            val restaurant = RestaurantVO()
-            restaurant.id = document.id
-            restaurant.name = data?.get("name") as String
-            restaurant.rating = data["rating"] as Double
-            restaurant.location = data["location"] as String
-            restaurant.image = data["image"] as String
-            restaurant.estimate_time = data["estimate_time"] as String
-            restaurant.type = data["type"] as String
-
-            restaurantList.add(restaurant)
-        }
-        return restaurantList
-    }
+//    private fun fetchRestaurants(value: QuerySnapshot?): List<RestaurantVO> {
+//        val restaurantList: MutableList<RestaurantVO> = arrayListOf()
+//        val result = value?.documents ?: arrayListOf()
+//
+//        for (document in result){
+//            val data = document.data
+//            val restaurant = RestaurantVO()
+//            restaurant.id = document.id
+//            restaurant.name = data?.get("name") as String
+//            restaurant.rating = data["rating"] as Double
+//            restaurant.location = data["location"] as String
+//            restaurant.image = data["image"] as String
+//            restaurant.estimate_time = data["estimate_time"] as String
+//            restaurant.type = data["type"] as String
+//
+//            restaurantList.add(restaurant)
+//        }
+//        return restaurantList
+//    }
 }
